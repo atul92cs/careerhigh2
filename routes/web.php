@@ -15,6 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('admin1/workshoptab/{type}/{location}',function ($type,$location){
+   
+     return Storage::response('workshoptab/'.$type.'/'.$location);
+    
+    
+})->middleware('auth:admin');
+
+Route::get('user/workshoptab/{type}/{location}',function ($type,$location){
+    
+    
+   
+     return Storage::response('workshoptab/'.$type.'/'.$location);
+    
+    
+})->middleware('auth');
+
 
 Auth::routes(['verify' => true]);
 
@@ -38,6 +54,18 @@ Route::post('/roadmapcomment', 'HomeController@roadmapcomment')->name('roadmap.c
 Route::post('/blogcomment', 'HomeController@blogcomment')->name('blog.comment');
 Route::post('/subscribe', 'SubscribeController@store')->name('subscribe.store');
 Route::post('/contact', 'ContactusController@store')->name('contact.store');
+Route::get('/workshops', 'HomeController@workshops')->name('workshops');
+Route::get('/workshop/{url}', 'HomeController@workshop')->name('workshop');
+Route::get('/availableworkshops', 'HomeController@availableworkshops')->name('availableworkshops.workshops');
+Route::get('/availableworkshop/{url}', 'HomeController@availableworkshop')->name('availableworkshop.workshop');
+Route::post('/workshopcontact', 'HomeController@workshopcontact')->name('availableworkshops.workshopcontact');
+
+Route::post('/createorder', 'HomeController@createorder')->name('createorder')->middleware('verified');
+Route::get('/paynow/{orderid}/{token}', 'HomeController@paynow')->name('paynow')->middleware('verified');
+Route::post('payment', 'HomeController@payment')->name('payment')->middleware('verified');
+Route::get('thankyou/{id}', 'HomeController@thankyou')->name('thankyou')->middleware('verified');
+Route::get('cancel/{id}', 'HomeController@cancel')->name('cancel')->middleware('verified');
+
 
 Route::get('/machine-learning-iris-code', function () {
     return view('static1');
@@ -51,20 +79,25 @@ Route::get('/machine-learning-titanic-code', function () {
 
 
 Route::get('/mm', function () {
-//    return Artisan::call('make:controller',['name'=>'ContactusController','--resource'=>'--resource' ,'--model'=>'Contactus']); 
-//      return Artisan::call('make:model',['name'=>'Contactus','-m'=>'-m']);
+//    return Artisan::call('make:notification',['name'=>'OrderNotify',]); 
+//    return Artisan::call('make:controller',['name'=>'AvailableworkshopController','--resource'=>'--resource' ,'--model'=>'Availableworkshop']); 
+//      return Artisan::call('make:model',['name'=>'Availableworkshop','-m'=>'-m']);
+//     return Artisan::call('storage:link');
 //     return Artisan::call('migrate');
-     return Artisan::call('config:cache');
+//     return Artisan::call('config:cache');
 });
 
 //Route::get('/roadmaps', 'FrontendController@roadmaps')->name('roadmaps');
 Route::get('/category/all', 'FrontendController@allcategory')->name('allcategory');
 Route::get('/user/activity', 'HomeController@useractivity')->name('user.activity')->middleware('verified');
 Route::get('/user/bookmarks', 'HomeController@userbookmarks')->name('user.bookmarks')->middleware('verified');
+Route::get('/user/orders', 'HomeController@orders')->name('user.orders')->middleware('verified');
 
 Route::get('/profile/edit', 'HomeController@profileedit')->name('profile.edit')->middleware('verified');
 Route::post('/profile/edit', 'HomeController@profileeditp')->name('profile.edit')->middleware('verified');
 Route::get('/profile', 'HomeController@profile')->name('profile')->middleware('verified');
+Route::get('/history', 'HomeController@history')->name('history')->middleware('verified');
+Route::get('/order/{id}', 'HomeController@order')->name('order')->middleware('verified');
 
 foreach(App\Category::where('status',1)->get() as $c ){
     Route::get($c->url, 'FrontendController@category')->name($c->url);
@@ -86,20 +119,25 @@ Route::group(['prefix' => 'admin'], function () {
     'blog' => 'BlogController',
     'upcommingroadmap' => 'UpcommingroadmapController',
     'advertisement' => 'AdvertisementController',
+    'workshop' => 'WorkshopController',
+    'availableworkshop' => 'AvailableworkshopController',
+    'workshoptab' => 'WorkshoptabController',
     
 ]);
     Route::resource('category', 'CategoryController');
     
     
-    
+    //Route::get('/workshoptab/{$id}', 'WorkshoptabController@index')->name('workshoptab.index');
     
 Route::get('/home', 'AdminController@index')->name('admin.home');
 //Route::get('/category', 'RoadmapController@show')->name('admin.category');
 // Route::get('/category/add', 'RoadmapController@categoryadd')->name('admin.categoryadd');
     
+    Route::get('/allorders', 'AdminController@allorders')->name('admin.allorders');
     Route::get('/allusers', 'AdminController@allusers')->name('admin.allusers');
     Route::get('/allsubs', 'AdminController@allsubs')->name('admin.allsubs');
     Route::get('/allcontact', 'AdminController@allcontact')->name('admin.allcontact');
+    Route::get('/workcontact', 'AdminController@workcontact')->name('admin.workcontact');
     
     
    

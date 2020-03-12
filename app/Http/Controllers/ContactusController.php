@@ -12,7 +12,7 @@ class ContactusController extends Controller
     public function store(Request $request)
     {
          $request->validate([
-//            'email'=>'required|unique:contactuses',
+//          'email'=>'required|unique:contactuses',
             'email'=>'required',
             'name'=>'required',
             'message'=>'required',

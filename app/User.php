@@ -48,6 +48,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function bookmark(){
         return $this->hasMany(Userbookmark::class)->orderBy('created_at','desc');
+    } 
+    public function orders(){
+        return $this->hasMany(Order::class)->orderBy('created_at','desc');
     }
    
     

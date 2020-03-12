@@ -36,6 +36,7 @@
     <!-- Additional CSS Themes file - not required-->
     <link rel="stylesheet" href="{{ asset('easyautocomplete') }}/easy-autocomplete.themes.min.css">
 </head>
+    @yield('modal')
 <style>
     #header .header-nav-features .header-nav-features-user .header-nav-features-dropdown {
     
@@ -124,7 +125,7 @@
                                                 </li>
                                                 <li class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle active" href="{{route('allcategory')}}" >
-                                                        Roadmaps
+                                                        <i class="fas fa-shapes"></i>&nbsp; Roadmaps
                                                     </a>
                                                     
                                                     <ul class="dropdown-menu" style="border-radius: 8px !important;padding:0px !important;">
@@ -156,6 +157,19 @@
                                                         </ul>
                                                 </li>
                                                 <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " href="#!" >
+                                                        <i class="fas fa-chalkboard-teacher"></i>&nbsp; Workshop
+                                                    </a>
+                                                    <ul class="dropdown-menu" style="border-radius: 8px !important;box-shadow: 1px 1px 1.1125rem #ffffff;padding:0px !important;">
+                                                      
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="{{route('workshops')}}"><i class="fa fa-hashtag" aria-hidden="true"></i> Upcoming Workshops</a></li>
+                                                            <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="{{route('availableworkshops.workshops')}}"><i class="fa fa-hashtag" aria-hidden="true"></i> Workshop Details</a></li>
+                                                            
+                                                        </ul>
+                                                </li>
+                                                <li class="dropdown">
                                                     <a class="dropdown-item" href="{{route('blog')}}">
                                                         Blogs
                                                     </a>
@@ -176,12 +190,13 @@
                                         <a href="#" class="header-nav-features-toggle" style="max-width: 10ch;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                           <i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }} 
                                         </a>
-                                        <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed header-nav-features-dropdown-force-right" id="headerTopUserDropdown" style="height:150px;border-radius:8px;margin-left:60px;margin-top: 35px;">
+                                        <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed header-nav-features-dropdown-force-right" id="headerTopUserDropdown" style="border-radius:8px;margin-left:60px;margin-top: 35px;">
                                             <div class="signin-form">
                                                 <ul class="" style="list-style-type: none;margin-left: -40px;font-size: 16px;">
                                               
                                                   
                                                         <li><a class="dropdown-item" href="{{route('user.bookmarks')}}"><i class="fa fa-bookmark" aria-hidden="true"></i> Bookmarks</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('user.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders</a></li>
                                                         <li><a class="dropdown-item" href="{{route('user.activity')}}"><i class="fa fa-history" aria-hidden="true"></i> History</a></li>
                                                         <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fa fa-user" aria-hidden="true"></i> Your Details</a></li>
                                                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -304,6 +319,7 @@
     <script src="{{asset('frontendassets')}}/js/other.js"></script>
     <script src="{{asset('frontendassets')}}/js/page.js"></script> 
     <script src="{{asset('frontendassets')}}/js/script.js"></script>
+    <script src="{{asset('frontendassets')}}/js/sticky-kit.min.js"></script>
 
     <!-- Theme Custom -->
     <script src="{{asset('frontendassets')}}/js/custom.js"></script>

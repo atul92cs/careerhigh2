@@ -23,21 +23,14 @@
      <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
      <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
      <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('adassets')}}/plugins/material-datetimepicker/css/bootstrap-material-datetimepicker.css">
+    <!-- Bootstrap datetimepicker css -->
+    <link rel="stylesheet" href="{{asset('adassets')}}/plugins/bootstrap-datetimepicker/css/bootstrap-datepicker3.min.css">
     @yield('style')
 </head>
     @yield('modal')
 <body>
-    <!-- [ Pre-loader ] start -->
-<!--
-    <div class="loader-bg">
-        <div class="loader-track">
-            <div class="loader-fill"></div>
-        </div>
-    </div>
--->
-    <!-- [ Pre-loader ] End -->
 
-    <!-- [ navigation menu ] start -->
     <nav class="pcoded-navbar">
         <div class="navbar-wrapper">
             <div class="navbar-brand header-logo">
@@ -58,27 +51,44 @@
                        <li data-username="Animations" class="nav-item"><a href="{{route('admin.home')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"></i></span><span class="pcoded-mtext">Home</span></a></li>
                     
                     <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
-                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">RoadMaps</span></a>
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Manage Workshops</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{route('category.index')}}" class="">Categories</a></li>
+                            <li class=""><a href="{{route('workshop.index')}}" class="">Upcoming Workshops</a></li>
+                            <li class=""><a href="{{route('admin.allorders')}}" class="">Workshop Orders</a></li>
+                            <li class=""><a href="{{route('availableworkshop.index')}}" class="">Available Workshops</a></li>
+                            <li class=""><a href="{{route('admin.workcontact')}}" class="">Workshops Contacts</a></li>
+                        </ul>
+                    </li>                    
+                    
+                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Manage RoadMaps</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{{route('category.index')}}" class="">Manage Categories</a></li>
                             <li class=""><a href="{{route('roadmap.index')}}" class="">Roadmap</a></li>
                             <li class=""><a href="{{route('upcommingroadmap.index')}}" class="">Upcoming Roadmaps</a></li>
-                            <li class=""><a href="{{route('advertisement.index')}}" class="">Advertisement</a></li>
+                            
                         </ul>
                     </li>
                     <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Blog</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{route('blog.create')}}" class="">Add</a></li>
-                            <li class=""><a href="{{route('blog.index')}}" class="">All blog</a></li>
+                            <li class=""><a href="{{route('blog.create')}}" class="">Add a Blog</a></li>
+                            <li class=""><a href="{{route('blog.index')}}" class="">All Blogs</a></li>
                         </ul>
                     </li>
                  <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
-                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Users</span></a>
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Manage Users</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{route('admin.allusers')}}" class="">All users</a></li>
+                            <li class=""><a href="{{route('admin.allusers')}}" class="">All Users</a></li>
                             <li class=""><a href="{{route('admin.allsubs')}}" class="">All Subscribers</a></li>
                             <li class=""><a href="{{route('admin.allcontact')}}" class="">All Enquiry</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Manage Advertisements</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{{route('advertisement.index')}}" class="">Advertisement</a></li>
                         </ul>
                     </li>
                  
@@ -346,7 +356,9 @@
    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 
-    
+        <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script src="{{asset('adassets')}}/plugins/material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="{{asset('adassets')}}/js/pages/form-picker-custom.js"></script>
     
     </body>
     

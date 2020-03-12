@@ -24,7 +24,7 @@
                 <div class="oval-divider--bottom oval-divider--10"></div>
             </section>
 
-            
+               
             
             <section>
                 <div class="container">
@@ -245,12 +245,13 @@
                 </section>
             @endif
             --}}
-            
         </main>
 @endsection
 
 
 @section ('script')
+
+
 <script>
 
 

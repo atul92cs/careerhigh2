@@ -10,7 +10,7 @@
 
     <!-- Web Fonts  -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
-
+@yield('head')
     <!-- Libs CSS -->
     <link href="{{asset('frontendassets')}}/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="{{asset('frontendassets')}}/vendor/font-awesome/css/all.min.css" rel="stylesheet" />
@@ -34,6 +34,8 @@
     <!-- Additional CSS Themes file - not required-->
     <link rel="stylesheet" href="{{ asset('easyautocomplete') }}/easy-autocomplete.themes.min.css">
 </head>
+    @yield('modal')
+    
 <style>
     .invalid-feedback {
      display: block; 
@@ -81,7 +83,7 @@
                                                 </li>
                                                 <li class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle active" href="{{route('allcategory')}}" >
-                                                        Roadmaps
+                                                        <i class="fas fa-shapes"></i>&nbsp; Roadmaps
                                                     </a>
                                                     <ul class="dropdown-menu" style="border-radius: 8px !important;box-shadow: 1px 1px 1.1125rem #ffffff;padding:0px !important;">
                                                         {{--
@@ -111,6 +113,20 @@
                                                         @endforeach
                                                         </ul>
                                                 </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " href="#!" >
+                                                        <i class="fas fa-chalkboard-teacher"></i>&nbsp; Workshop
+                                                    </a>
+                                                    <ul class="dropdown-menu" style="border-radius: 8px !important;box-shadow: 1px 1px 1.1125rem #ffffff;padding:0px !important;">
+                                                      
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="{{route('workshops')}}"><i class="fa fa-hashtag" aria-hidden="true"></i> Upcoming Workshops</a></li>
+                                                            <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="{{route('availableworkshops.workshops')}}"><i class="fa fa-hashtag" aria-hidden="true"></i> Workshop Details</a></li>
+                                                            
+                                                        </ul>
+                                                </li>
+                                               
                                                 <li class="dropdown">
                                                     <a class="dropdown-item" href="{{route('blog')}}">
                                                         Blogs

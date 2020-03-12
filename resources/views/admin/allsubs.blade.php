@@ -18,8 +18,8 @@
                                     <table id="bootstrap-table" class="table table-responsive">
                                         <thead>
                                             <th data-field="index" class="text-left" >Srno</th>
-                                            <th data-field="id" class="text-left"  data-visible="false">Email</th>
-                                            <th data-field="id" class="text-left"  data-visible="false">Joined on</th>
+                                            <th data-field="email" class="text-left"  data-visible="true">Email</th>
+                                            <th data-field="joined" class="text-left"  data-visible="true">Joined on</th>
                                         </thead>
                                         <tbody>
                                             @php  $i=0; @endphp @forelse($main as $m)
@@ -45,7 +45,56 @@
 
 
 @section('script')
+<script>
 
+    $(document).ready(function() {
+    $('#bootstrap-table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel'
+        ]
+    } );
+} );
+    
+    
+    
+//    var $table = $('#bootstrap-table');
+//        
+//        $table.bootstrapTable({
+//            toolbar: ".toolbar",
+//            clickToSelect: true,
+////            showRefresh: true,
+//            search: true,
+////            showToggle: true,
+////            showColumns: true,
+//            pagination: false,
+//            searchAlign: 'right',
+//            pageSize: 8,
+//            clickToSelect: false,
+//            pageList: [8, 10, 25, 50, 100],
+//            
+//            formatShowingRows: function(pageFrom, pageTo, totalRows) {
+//                //do nothing here, we don't want to show the text "showing x of y from..."
+//            },
+//            formatRecordsPerPage: function(pageNumber) {
+//                return pageNumber + " rows visible";
+//            },
+//            icons: {
+//                refresh: 'fa fa-refresh',
+//                toggle: 'fa fa-th-list',
+//                columns: 'fa fa-columns',
+//                detailOpen: 'fa fa-plus-circle',
+//                detailClose: 'fa fa-minus-circle'
+//            }
+//        });
+//        
+//        //activate the tooltips after the data table is initialized
+//        $('[rel="tooltip"]').tooltip();
+//        
+//        $(window).resize(function() {
+//            $table.bootstrapTable('resetView');
+//        });
+</script>
 
 @endsection
 

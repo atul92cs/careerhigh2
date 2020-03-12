@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>CareerHigh</title>
     <link rel="shortcut icon" type="image/png" href="{{asset('frontendassets')}}/img/favicon.png" />
-    <meta name="description" content="Master - Responsive HTML5 Template">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -25,7 +25,7 @@
 
     <!-- Skin -->
     <link rel="stylesheet" href="{{asset('frontendassets')}}/css/skin/default.css">
-
+<link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('frontendassets')}}/css/custom.css">
     <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
@@ -35,6 +35,7 @@
     <!-- Additional CSS Themes file - not required-->
     <link rel="stylesheet" href="{{ asset('easyautocomplete') }}/easy-autocomplete.themes.min.css">
 </head>
+    @yield('modal')
 <style>
       .moblongs{
         height:300px;
@@ -60,7 +61,7 @@
     <div class="wrapper">
         <!--Header-->
         <header id="header" class="header-transparent header-effect-reveal" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'reveal', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 150, 'stickySetTop': '-52px'}">
-            <div class="header-body moblongs" style="height:auto !important;">
+            <div class="moblongs">
                 <div class="header-container container">
                     <div class="header-row">
                         <div class="header-column">
@@ -77,14 +78,6 @@
                             <div class="header-row pt-3">
                                 <nav class="header-nav-top">
                                     <ul class="nav nav-pills">
-<!--
-                                        <li class="nav-item nav-item-anim-icon d-none d-md-block">
-                                            <a class="nav-link text-white o-7 pl-0 m-list--link" href="#"><i class="icon-mail-2 fs-15 mr-1"></i> support@domain.com </a>
-                                        </li>
-                                        <li class="nav-item nav-item-anim-icon d-none d-md-block">
-                                            <span class="ws-nowrap text-white o-7 m-list--link fs-15"><i class="icon-headphone"></i> +45 3212 5680</span>
-                                        </li>
--->
                                         <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                             <div class="social social-light text-center">
                                                 <a class="social-facebook m-0 transition-hover" href="https://www.facebook.com/CareerHighSuccess/" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -93,7 +86,7 @@
                                         </li>
                                     </ul>
                                 </nav>
-                                <div class="header-nav-features sc">
+                                <div class="header-nav-features sc" style="height:auto;">
                                     <div class="header-nav-feature header-nav-features-search d-inline-flex">
                                         <a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i class="fas fa-search header-nav-top-icon text-white-50"></i></a>
                                         <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
@@ -119,7 +112,7 @@
                                                 
                                                 <li class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle active" href="{{route('allcategory')}}" >
-                                                        Roadmaps
+                                                        <i class="fas fa-shapes"></i>&nbsp; Roadmaps
                                                     </a>
                                                     
                                                     <ul class="dropdown-menu" style="border-radius: 8px !important;box-shadow: 1px 1px 1.1125rem #ffffff;padding:0px !important;">
@@ -142,6 +135,19 @@
                                                     
                                                 </li>
                                                 <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " href="#!" >
+                                                        <i class="fas fa-chalkboard-teacher"></i>&nbsp; Workshop
+                                                    </a>
+                                                    <ul class="dropdown-menu" style="border-radius: 8px !important;box-shadow: 1px 1px 1.1125rem #ffffff;padding:0px !important;">
+                                                      
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="{{route('workshops')}}"><i class="fa fa-hashtag" aria-hidden="true"></i> Upcoming Workshops</a></li>
+                                                            <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="{{route('availableworkshops.workshops')}}"><i class="fa fa-hashtag" aria-hidden="true"></i> Workshop Details</a></li>
+                                                            
+                                                        </ul>
+                                                </li>
+                                                <li class="dropdown">
                                                     <a class="dropdown-item" href="{{route('blog')}}">
                                                         Blogs
                                                     </a>
@@ -159,12 +165,13 @@
                                         <a href="#" class="header-nav-features-toggle text-info" style="border:2px solid #17a2b8;padding: 2px 10px;border-radius: 6px;">
                                              {{ Auth::user()->name }}
                                         </a>
-                                        <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed header-nav-features-dropdown-force-right" id="headerTopUserDropdown" style="height:150px;border-radius:8px;box-shadow:1px 1px 1.1125rem #818181;margin-left:60px;margin-top: 35px;padding: 10px;min-width: 200px;">
+                                        <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed header-nav-features-dropdown-force-right" id="headerTopUserDropdown" style="border-radius:8px;box-shadow:1px 1px 1.1125rem #818181;margin-left:60px;margin-top: 35px;padding: 10px;min-width: 200px;">
                                             <div class="signin-form">
                                                 <ul class="" style="list-style-type: none;margin-left: -40px;font-size: 16px;">
                                               
                                                   
                                                         <li><a class="dropdown-item" href="{{route('user.bookmarks')}}"><i class="fa fa-bookmark" aria-hidden="true"></i> Bookmarks</a></li>
+                                                    <li><a class="dropdown-item" href="{{route('user.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders</a></li>
                                                         <li><a class="dropdown-item" href="{{route('user.activity')}}"><i class="fa fa-history" aria-hidden="true"></i> History</a></li>
                                                         <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fa fa-user" aria-hidden="true"></i> Your Details</a></li>
                                                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

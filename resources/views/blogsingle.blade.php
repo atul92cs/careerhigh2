@@ -14,17 +14,8 @@
                             <h1 class="mb-4">{{$blog->title}}</h1>
                             
                             <div class="text-center">
-                                <small class="text-muted mr-3">{{Carbon\Carbon::parse($blog->created_at)->diffforhumans()}}</small>
+                                <small class="text-muted mr-3">{{Carbon\Carbon::parse($blog->created_at)->diffforhumans()}} - By {{$blog->author}}</small>
 
-                                <div class="d-inline-block mr-3">
-                                    <div class="avatar">
-                                        <img class="img-fluid rounded-circle" src="{{asset('frontendassets')}}/img/avatar/a1.jpg" alt="Avatar">
-                                    </div>
-                                </div>
-
-                                <div class="d-inline-block">
-                                    <a href="#!"><small class="text-muted anim-link-2">By {{$blog->author}}</small></a>
-                                </div>
                             </div>
                         </div>
 

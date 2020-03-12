@@ -6,6 +6,8 @@ use App\Roadmapcomment;
 use App\Commentreply;
 use Illuminate\Http\Request;
 use App\User;
+use App\Order;
+use App\WorkshopContact;
 use App\Subscribe;
 use App\Contactus;
 class AdminController extends Controller
@@ -41,6 +43,11 @@ class AdminController extends Controller
         
         $data['main']=User::all();
         return view('admin.allusers',$data);
+    } 
+    public function allorders(){
+        
+        $data['main']=Order::all();
+        return view('admin.allorders',$data);
     }
      public function allsubs(){
         
@@ -77,6 +84,11 @@ class AdminController extends Controller
         ]);
          return response()->json(['success'=>true,'msg'=>'replied']);
         
+    }
+    public function workcontact()
+    {
+        $data['main']=WorkshopContact::all();
+        return view('admin.workcontact',$data);
     }
     
 }
